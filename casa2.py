@@ -2,9 +2,6 @@ import streamlit as st
 import pandas as pd  
 import os 
 
-# Corrected import statement for Matplotlib
-import matplotlib.pyplot as plt  
-
 csv_file_path = 'city_data.csv'
 
 def load_data():
@@ -45,6 +42,7 @@ def display_statistics(df):
     st.dataframe(df)
     
     # Using Matplotlib for plotting
+    import matplotlib.pyplot as plt  
     try:
         plt.figure(figsize=(10, 6))
         plt.bar(df["City"], df["Population"], color='skyblue')
