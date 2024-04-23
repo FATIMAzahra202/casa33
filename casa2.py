@@ -37,20 +37,20 @@ def add_city(df):
     return df
 
 def display_statistics(df):
-    st.title('Moroccan Cities Statistics')
-    st.write("Here are some statistics about major cities in Morocco:")
-    st.dataframe(df)
+    st.title('Moroccan Cities Statistics')  
+    st.write("Here are some statistics about major cities in Morocco:")  
+    st.dataframe(df)  
     
     # Using Matplotlib for plotting
-    import matplotlib.pyplot as plt  
     try:
-        plt.figure(figsize=(10, 6))
-        plt.bar(df["City"], df["Population"], color='skyblue')
-        plt.xlabel("City")
-        plt.ylabel("Population")
-        plt.title("Population of Major Moroccan Cities")
-        plt.xticks(rotation=45, ha='right')
-        st.pyplot()
+        import matplotlib.pyplot as plt  
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.bar(df["City"], df["Population"], color='skyblue')
+        ax.set_xlabel("City")
+        ax.set_ylabel("Population")
+        ax.set_title("Population of Major Moroccan Cities")
+        ax.tick_params(axis='x', rotation=45, ha='right')
+        st.pyplot(fig)
     except Exception as e:
         st.error(f"Error plotting data: {e}")
 
@@ -68,12 +68,12 @@ def display_statistics(df):
 
 def main():
     try:
-        df = load_data()
-        df = add_city(df)
-        display_statistics(df)
+        df = load_data()  
+        df = add_city(df)  
+        display_statistics(df)  
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    st.set_page_config(page_title='Moroccan Cities Data', layout='wide')
-    main()
+    st.set_page_config(page_title='Moroccan Cities Data', layout='wide')  
+    main()  
